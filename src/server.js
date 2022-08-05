@@ -4,7 +4,8 @@ const routes = require("./routes");
 const init = async () => {
   const server = Hapi.server({
     port: 3000,
-    host: "localhost",
+    // host: "localhost",
+    host: process.env.NODE_ENV !== "production" ? "localhost" : "0.0.0.0",
     // * menambahkan cors agar bisa integrasi dan mengambi data dengan teknik fetch(XMLHTTPRequest)
     routes: {
       cors: {
