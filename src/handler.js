@@ -1,5 +1,6 @@
-const { nanoid } = require("nanoid");
-const notes = require("./notes");
+/* eslint-disable max-len */
+const { nanoid } = require('nanoid');
+const notes = require('./notes');
 
 // * menyimpan catatan
 const addNoteHandler = (req, h) => {
@@ -30,8 +31,8 @@ const addNoteHandler = (req, h) => {
   // * ketika success atau gagal berikan response pada client
   if (isSuccess) {
     const response = h.response({
-      status: `Success`,
-      message: `Data berhasil Ditambahkan`,
+      status: 'Success',
+      message: 'Catatan berhasil Ditambahkan',
       data: {
         noteId: id,
       },
@@ -42,8 +43,8 @@ const addNoteHandler = (req, h) => {
 
   // * akan gagal jika tidak terpenuhi
   const response = h.response({
-    status: `Failed`,
-    message: `Catatan Gagal Ditambahkan`,
+    status: 'Failed',
+    message: 'Catatan Gagal Ditambahkan',
     data: {
       noteId: id,
     },
@@ -54,7 +55,7 @@ const addNoteHandler = (req, h) => {
 
 // * menampilkan notes
 const getAllNotesHandler = () => ({
-  status: `Success`,
+  status: 'Success',
   data: {
     notes,
   },
@@ -72,7 +73,7 @@ const getNoteByIdHandler = (req, h) => {
   // * Kita kembalikan fungsi handler dengan data beserta objek note di dalamnya. Namun sebelum itu, pastikan dulu objek note tidak bernilai undefined. Bila undefined, kembalikan dengan respons gagal.
   if (note !== undefined) {
     return {
-      status: `Success`,
+      status: 'Success',
       data: {
         note,
       },
@@ -80,8 +81,8 @@ const getNoteByIdHandler = (req, h) => {
   }
 
   const response = h.response({
-    status: `Fail`,
-    message: `Data tidak ditemukan!`,
+    status: 'Fail',
+    message: 'Data tidak ditemukan!',
   });
   response.code(404);
   return response;
@@ -113,16 +114,16 @@ const editNoteByIdHandler = (req, h) => {
     };
 
     const response = h.response({
-      status: `Success`,
-      message: `Catatan Berhasil Diperbaharui`,
+      status: 'Success',
+      message: 'Catatan Berhasil Diperbaharui',
     });
     response.code(200);
     return response;
   }
 
   const response = h.response({
-    status: `Failed`,
-    message: `Catatan Gagal Diperbaharui, id tidak ditemukan`,
+    status: 'Failed',
+    message: 'Catatan Gagal Diperbaharui, id tidak ditemukan',
   });
   response.code(404);
   return response;
@@ -138,16 +139,16 @@ const deleteNoteByIdHandler = (req, h) => {
     notes.splice(index);
 
     const response = h.response({
-      status: `Success`,
-      message: `Catatan Berhasil Dihapus`,
+      status: 'Success',
+      message: 'Catatan Berhasil Dihapus',
     });
     response.code(200);
     return response;
   }
 
   const response = h.response({
-    status: `Failed`,
-    message: `Catatan Gagal Dihapus, id tidak ditemukan`,
+    status: 'Failed',
+    message: 'Catatan Gagal Dihapus, id tidak ditemukan',
   });
   response.code(404);
   return response;

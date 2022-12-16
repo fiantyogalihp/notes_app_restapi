@@ -1,15 +1,16 @@
-const Hapi = require("@hapi/hapi");
-const routes = require("./routes");
+/* eslint-disable no-console */
+const Hapi = require('@hapi/hapi');
+const routes = require('./routes');
 
 const init = async () => {
   const server = Hapi.server({
     port: 3000,
     // host: "localhost",
-    host: process.env.NODE_ENV !== "production" ? "localhost" : "0.0.0.0",
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
     // * menambahkan cors agar bisa integrasi dan mengambi data dengan teknik fetch(XMLHTTPRequest)
     routes: {
       cors: {
-        origin: ["*"],
+        origin: ['*'],
         // methods: ["GET", "POST"],
       },
     },
@@ -18,10 +19,10 @@ const init = async () => {
   server.route(routes);
 
   await server.start();
-  console.log("Server running on %s", server.info.uri);
+  console.log('Server running on %s', server.info.uri);
 };
 
-process.on("unhandledRejection", (err) => {
+process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });

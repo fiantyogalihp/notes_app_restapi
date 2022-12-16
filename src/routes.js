@@ -4,32 +4,32 @@ const {
   getNoteByIdHandler,
   editNoteByIdHandler,
   deleteNoteByIdHandler,
-} = require("./handler");
+} = require('./handler');
 
 const routes = [
   {
-    method: `POST`,
-    path: `/notes`,
+    method: 'POST',
+    path: '/notes',
     handler: addNoteHandler,
   },
   {
-    method: `GET`,
-    path: `/notes`,
+    method: 'GET',
+    path: '/notes',
     handler: getAllNotesHandler,
   },
   {
-    method: `GET`,
-    path: `/notes/{id}`,
+    method: 'GET',
+    path: '/notes/{id}',
     handler: getNoteByIdHandler,
   },
   {
-    method: `PUT`,
-    path: `/notes/{id}`,
+    method: 'PUT',
+    path: '/notes/{id}',
     handler: editNoteByIdHandler,
   },
   {
-    method: `DELETE`,
-    path: `/notes/{id}`,
+    method: 'DELETE',
+    path: '/notes/{id}',
     handler: deleteNoteByIdHandler,
   },
 ];
